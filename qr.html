@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR de la carta para mesas · Alfredo Café &amp; Copas</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png" />
+  <link rel="stylesheet" href="styles.css?v=20261016m" />
+  <script defer src="lib/qrcode.js?v=20261016m"></script>
+  <script defer src="qr.js?v=20261016m"></script>
+  <style>
+    body { background: #ddd2c4; }
+    .qr-tools { max-width: 900px; margin: 0 auto; padding: 2rem 16px 1rem; }
+    .qr-tools h1 { font-size: 2.2rem; }
+    .qr-tools p { margin-top: .6rem; max-width: 60ch; color: var(--espresso-2); }
+    .qr-tools code { background: var(--crema-2); padding: .1rem .35rem; border-radius: 6px; word-break: break-all; }
+    .qr-tools .btn { margin-top: 1.2rem; }
+    /* Hoja A4 con 4 tarjetas A6 para recortar */
+    .sheet {
+      width: 210mm; height: 297mm; margin: 1rem auto 3rem; background: #fff;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+      box-shadow: 0 20px 50px -30px rgba(0,0,0,.5);
+    }
+    .tent {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      padding: 10mm; border: 1px dashed #cbbfb2; background: var(--melocoton); color: var(--espresso);
+    }
+    .tent-mark { width: 16mm; height: 16mm; background: var(--espresso);
+      -webkit-mask: url("assets/img/icono-copa.webp") center / contain no-repeat;
+              mask: url("assets/img/icono-copa.webp") center / contain no-repeat; }
+    .tent-name { font-family: var(--ff-display); font-size: 30pt; line-height: 1; margin-top: 3mm; }
+    .tent-sub { font-size: 7pt; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; margin-top: 1.5mm; }
+    .tent-qr { width: 52mm; height: 52mm; margin: 7mm 0 5mm; padding: 3mm; background: #fff; border-radius: 3mm; }
+    .tent-qr svg { width: 100%; height: 100%; display: block; }
+    .tent-cta { font-family: var(--ff-display); font-size: 17pt; line-height: 1.1; }
+    .tent-hint { font-size: 8pt; margin-top: 2mm; opacity: .8; }
+    @page { size: A4; margin: 0; }
+    @media print {
+      body { background: #fff; }
+      .qr-tools { display: none; }
+      .sheet { margin: 0; box-shadow: none; }
+      .tent { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+    @media screen and (max-width: 860px) {
+      .sheet { width: 100%; height: auto; grid-template-columns: 1fr; }
+      .tent { min-height: 120vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="qr-tools">
+    <h1>QR de la carta para las mesas</h1>
+    <p>Cada código abre la carta en el móvil: <code data-qr-url>carta.html</code></p>
+    <p>Imprime esta hoja en A4 a color, recorta las cuatro tarjetas y ponlas en un portacartas o pégalas en las mesas. Como el QR apunta a la página de la carta, sirve para siempre aunque cambien los precios.</p>
+    <p data-qr-warning hidden><strong>Ojo:</strong> ahora estás viendo la web en tu ordenador (localhost) y este QR solo funciona aquí. Imprímelo cuando la web esté publicada con su dominio.</p>
+    <button class="btn btn-dark" type="button" data-print>Imprimir</button>
+  </div>
+
+  <div class="sheet">
+    <div class="tent"><span class="tent-mark"></span><span class="tent-name">Alfredo</span><span class="tent-sub">Café &amp; Copas</span><div class="tent-qr" data-qr></div><span class="tent-cta">Mira la carta<br />en tu móvil</span><span class="tent-hint">Apunta con la cámara al código</span></div>
+    <div class="tent"><span class="tent-mark"></span><span class="tent-name">Alfredo</span><span class="tent-sub">Café &amp; Copas</span><div class="tent-qr" data-qr></div><span class="tent-cta">Mira la carta<br />en tu móvil</span><span class="tent-hint">Apunta con la cámara al código</span></div>
+    <div class="tent"><span class="tent-mark"></span><span class="tent-name">Alfredo</span><span class="tent-sub">Café &amp; Copas</span><div class="tent-qr" data-qr></div><span class="tent-cta">Mira la carta<br />en tu móvil</span><span class="tent-hint">Apunta con la cámara al código</span></div>
+    <div class="tent"><span class="tent-mark"></span><span class="tent-name">Alfredo</span><span class="tent-sub">Café &amp; Copas</span><div class="tent-qr" data-qr></div><span class="tent-cta">Mira la carta<br />en tu móvil</span><span class="tent-hint">Apunta con la cámara al código</span></div>
+  </div>
+</body>
+</html>
