@@ -9,7 +9,7 @@
   // Índice 0 = domingo … 6 = sábado.
   var SCHEDULE = {
     0: [900, 1320],   // domingo 15:00 – 22:00
-    1: [900, 1290],   // lunes 15:00 – 21:30
+    1: null,          // lunes cerrado (descanso del personal)
     2: [930, 1320],   // martes 15:30 – 22:00
     3: [930, 1320],
     4: [930, 1320],
@@ -39,10 +39,15 @@
   function openState(now) {
     var today = SCHEDULE[now.day];
     var yday = SCHEDULE[(now.day + 6) % 7];
-    if (yday[1] > 1440 && now.min < yday[1] - 1440) return { open: true, closesAt: yday[1] };
-    if (now.min >= today[0] && now.min < today[1]) return { open: true, closesAt: today[1] };
-    if (now.min < today[0]) return { open: false, opensAt: today[0], when: "hoy" };
-    return { open: false, opensAt: SCHEDULE[(now.day + 1) % 7][0], when: "mañana" };
+    if (yday && yday[1] > 1440 && now.min < yday[1] - 1440) return { open: true, closesAt: yday[1] };
+    if (today && now.min >= today[0] && now.min < today[1]) return { open: true, closesAt: today[1] };
+    if (today && now.min < today[0]) return { open: false, opensAt: today[0], when: "hoy" };
+    // Siguiente día que abrimos (el lunes cerramos)
+    for (var i = 1; i <= 7; i++) {
+      var d = (now.day + i) % 7;
+      if (SCHEDULE[d]) return { open: false, opensAt: SCHEDULE[d][0], when: i === 1 ? "mañana" : "el " + DAY_NAMES[d] };
+    }
+    return { open: false, opensAt: 0, when: "" };
   }
 
   /* ---------- Abierto / cerrado ahora y fila de hoy en el horario ---------- */
@@ -70,7 +75,9 @@
 
     var note = document.querySelector("[data-status-full]");
     if (note && !st.open) {
-      note.textContent = "Hoy es " + DAY_NAMES[now.day] + ". En festivos el horario puede cambiar: llámanos si tienes dudas.";
+      note.textContent = SCHEDULE[now.day]
+        ? "Hoy es " + DAY_NAMES[now.day] + ". En festivos el horario puede cambiar: llámanos si tienes dudas."
+        : "Los lunes cerramos: es el día de descanso del personal.";
     }
   }
 

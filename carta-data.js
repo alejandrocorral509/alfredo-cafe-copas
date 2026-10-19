@@ -322,7 +322,7 @@
                   { nombre: "Copa Ferrero", desc: "helado de Ferrero, avellana y vainilla, 2 Ferreros y nata montada", precio: "7,80" },
                   { nombre: "Copa Borracha", desc: "helado de Málaga con pasas, vainilla y chocolate, bizcocho, pasas al PX y nata montada", precio: "7,80" },
                   { nombre: "Copa Griega con piñones y nueces", desc: "helado de yogur con frutas del bosque, nata-nueces y nata-piñones, con nata y miel", precio: "8,00" },
-                  { nombre: "Copa Bailey's", desc: "helado de capuccino, vainilla y tres chocolates, bañado en Bailey's con nata montada", precio: "7,80" },
+                  { nombre: "Copa Baileys", desc: "helado de capuccino, vainilla y tres chocolates, bañado en Baileys con nata montada", precio: "7,80" },
                   { nombre: "Copa Crunch", desc: "helado de Crunch, dulce de leche y vainilla cookies, barrita Crunch y nata montada", precio: "7,40" },
                   { nombre: "Copa Unicornio", desc: "helado de unicornio y arcoíris, y mucho colorido", precio: "5,30" }
                 ]
@@ -365,7 +365,7 @@
                 columnas: ["Sin nata", "Con nata"],
                 productos: [
                   { nombre: "Lugumba", desc: "helado de chocolate y brandy de Jerez", precios: ["5,20", "5,50"] },
-                  { nombre: "Irlandés", desc: "helado de capuccino y Bailey's", precios: ["5,20", "5,50"] },
+                  { nombre: "Irlandés", desc: "helado de capuccino y Baileys", precios: ["5,20", "5,50"] },
                   { nombre: "Tequimango", desc: "helado de mango y tequila", precios: ["5,20", "5,50"] }
                 ]
               }
