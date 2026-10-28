@@ -7,11 +7,11 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#15100D" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;700;800&display=swap" />
   <style>
-    @font-face { font-family: "DM Serif Display"; src: url("../assets/fonts/dm-serif-display.woff2") format("woff2"); font-display: swap; }
-    @font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
-    @font-face { font-family: "Barlow Condensed"; src: url("../assets/fonts/barlow-condensed-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-    @font-face { font-family: "Barlow Condensed"; src: url("../assets/fonts/barlow-condensed-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+    :root { --ff-head: "Bricolage Grotesque", system-ui, sans-serif; --ff-body: "Figtree", system-ui, sans-serif; }
 
     :root {
       --noche: #15100D; --noche-2: #221A15; --tinta: #F3E6CF; --gris: #BDAA93; --oro: #EBA43C;
@@ -21,11 +21,11 @@
     * { box-sizing: border-box; }
     html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    body { margin: 0; background: var(--noche); color: var(--tinta); font: 400 17px/1.5 "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    h1, h2 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; line-height: 1.02; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+    body { margin: 0; background: var(--noche); color: var(--tinta); font: 400 17px/1.5 var(--ff-body); -webkit-font-smoothing: antialiased; }
+    h1, h2 { font-family: var(--ff-head); font-weight: 800; line-height: 1; letter-spacing: -.025em; margin: 0; text-wrap: balance; }
     h2 { font-size: clamp(2.1rem, 6vw, 3.6rem); }
     p { margin: 0; }
-    .kicker { font: 700 .82rem/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); margin-bottom: 1rem; }
+    .kicker { font: 800 .78rem/1 var(--ff-body); letter-spacing: .14em; text-transform: uppercase; color: var(--oro); margin-bottom: 1rem; }
     .lead { font-size: clamp(1.08rem, 1vw + .9rem, 1.3rem); margin-top: 1.1rem; max-width: 34ch; color: var(--tinta); }
     .small { font-size: .82rem; color: var(--gris); margin-top: 1.4rem; max-width: 46ch; }
 
@@ -42,17 +42,17 @@
     .slide--nata { background: var(--nata); color: var(--espresso); }
     .slide--nata .kicker { color: #6A3606; }
     .slide--nata .small { color: #553826; }
-    .num { position: absolute; right: var(--gutter); bottom: 1.4rem; font: 600 .8rem "Barlow Condensed", sans-serif; letter-spacing: .12em; opacity: .85; }
+    .num { position: absolute; right: var(--gutter); bottom: 1.4rem; font: 600 .8rem var(--ff-head); letter-spacing: .12em; opacity: .85; }
 
     /* Portada */
     .cover h1 { font-size: clamp(3.4rem, 13vw, 7.5rem); }
-    .cover .sub { font: 700 1rem "Manrope"; letter-spacing: .32em; text-transform: uppercase; margin-top: .9rem; color: var(--oro); }
+    .cover .sub { font: 700 1rem var(--ff-body); letter-spacing: .32em; text-transform: uppercase; margin-top: .9rem; color: var(--oro); }
     .cover .lead { max-width: 30ch; margin-top: 2.2rem; }
     .cover .by { margin-top: 3rem; font-size: .9rem; color: var(--gris); }
     .hint { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); font-size: .8rem; color: var(--gris); }
 
     /* Lista de Google Maps */
-    .maps { margin-top: 1.8rem; background: #fff; color: #202124; border-radius: 18px; padding: .4rem 0; max-width: 520px; box-shadow: 0 18px 40px rgba(0,0,0,.25); font-family: Arial, "Manrope", sans-serif; }
+    .maps { margin-top: 1.8rem; background: #fff; color: #202124; border-radius: 18px; padding: .4rem 0; max-width: 520px; box-shadow: 0 18px 40px rgba(0,0,0,.25); font-family: Arial, var(--ff-body), sans-serif; }
     .maps-q { display: flex; gap: .6rem; align-items: center; margin: .4rem .8rem .3rem; padding: .7rem 1rem; border-radius: 999px; background: #F1F3F4; font-size: .95rem; color: #3C4043; }
     .maps-q svg { width: 18px; height: 18px; flex: none; }
     .maps li { list-style: none; display: grid; grid-template-columns: 2.2rem 1fr; gap: .2rem .6rem; padding: .62rem 1rem; border-top: 1px solid #ECEDEF; }
@@ -68,8 +68,8 @@
     /* Tarjetas de puesto */
     .ranks { display: grid; gap: 1rem; margin-top: 2rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
     .rank { background: var(--noche-2); border: 1px solid rgba(235,164,60,.25); border-radius: 18px; padding: 1.3rem 1.3rem 1.2rem; }
-    .rank .q { font: 700 .82rem "Barlow Condensed"; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
-    .rank .big { font: 700 3.6rem/1 "Barlow Condensed", sans-serif; color: var(--oro); margin: .5rem 0 .4rem; }
+    .rank .q { font: 700 .82rem var(--ff-head); letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+    .rank .big { font: 700 3.6rem/1 var(--ff-head); color: var(--oro); margin: .5rem 0 .4rem; }
     .rank .big.out { font-size: 2rem; line-height: 1.05; padding: .5rem 0 .3rem; }
     .rank p { font-size: .9rem; color: var(--gris); }
 
@@ -78,7 +78,7 @@
     .why div { display: grid; grid-template-columns: 2.4rem 1fr; gap: .9rem; align-items: start; }
     .why b { display: block; font-size: 1.05rem; }
     .why span { color: #4A3526; font-size: .95rem; }
-    .dot { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; font: 700 1.1rem "Barlow Condensed"; }
+    .dot { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; font: 700 1.1rem var(--ff-head); }
     .dot.ok { background: #DCEBDD; color: var(--verde); }
     .dot.no { background: #F6D5CC; color: var(--rojo); }
 
@@ -102,7 +102,7 @@
     /* Informe */
     .report { margin-top: 2rem; width: 100%; max-width: 560px; border-collapse: collapse; font-size: 1rem; }
     .report th, .report td { padding: .85rem .6rem; text-align: left; border-bottom: 1px solid rgba(42,27,20,.15); }
-    .report th { font: 700 .8rem "Barlow Condensed"; letter-spacing: .14em; text-transform: uppercase; color: #6A3606; }
+    .report th { font: 700 .8rem var(--ff-head); letter-spacing: .14em; text-transform: uppercase; color: #6A3606; }
     .report td:nth-child(2) { font-weight: 800; }
     .report td:nth-child(3) { color: #6A3606; font-weight: 800; }
 
@@ -113,12 +113,12 @@
     .msg time { display: block; text-align: right; font-size: .7rem; color: #4F5F67; margin-top: .15rem; }
 
     /* Precio */
-    .plans { display: grid; gap: 1rem; margin-top: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 760px; }
+    .plans { display: grid; gap: 1rem; margin-top: 2rem; grid-template-columns: 1fr; max-width: 480px; }
     .plan { border-radius: 20px; padding: 1.4rem 1.4rem 1.3rem; background: var(--noche-2); border: 1px solid rgba(243,230,207,.14); position: relative; }
     .plan.best { border: 2px solid var(--oro); }
-    .plan .tag { position: absolute; top: -.75rem; left: 1.2rem; background: var(--oro); color: var(--noche); font: 700 .78rem "Barlow Condensed"; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .6rem; border-radius: 6px; }
-    .plan h3 { margin: 0; font: 700 1.2rem "Manrope"; }
-    .plan .price { font: 700 3.2rem/1 "Barlow Condensed"; color: var(--oro); margin: .7rem 0 .2rem; }
+    .plan .tag { position: absolute; top: -.75rem; left: 1.2rem; background: var(--oro); color: var(--noche); font: 700 .78rem var(--ff-head); letter-spacing: .12em; text-transform: uppercase; padding: .3rem .6rem; border-radius: 6px; }
+    .plan h3 { margin: 0; font: 700 1.2rem var(--ff-body); }
+    .plan .price { font: 700 3.2rem/1 var(--ff-head); color: var(--oro); margin: .7rem 0 .2rem; }
     .plan .price small { font-size: 1.1rem; color: var(--gris); letter-spacing: .02em; }
     .plan ul { margin: .9rem 0 0; padding-left: 1.1rem; color: var(--tinta); font-size: .95rem; }
     .plan li { margin-top: .35rem; }
@@ -242,17 +242,17 @@
   <!-- 7 -->
   <section class="slide slide--nata">
     <div class="inner">
-      <p class="kicker">Cada mes</p>
-      <h2>Te enseño en qué puesto sales</h2>
+      <p class="kicker">Al acabar el mes de prueba</p>
+      <h2>Te enseño cuánto has subido</h2>
       <table class="report">
-        <thead><tr><th>Búsqueda</th><th>Hoy</th><th>Dentro de un mes</th></tr></thead>
+        <thead><tr><th>Búsqueda</th><th>Hoy</th><th>Al mes</th></tr></thead>
         <tbody>
           <tr><td>heladería Jerez</td><td>19.º</td><td>¿?</td></tr>
           <tr><td>cafetería Jerez</td><td>7.º</td><td>¿?</td></tr>
           <tr><td>copas Jerez</td><td>fuera del top 10</td><td>¿?</td></tr>
         </tbody>
       </table>
-      <p class="small">Así ves tú mismo si sirve o no. También verás las llamadas y las veces que te piden cómo llegar, que Google las cuenta en tu ficha.</p>
+      <p class="small">Así decides con datos si te la quedas. También verás las llamadas y las veces que te piden cómo llegar, que Google las cuenta en tu ficha.</p>
     </div>
     <span class="num">7 / 10</span>
   </section>
@@ -268,7 +268,7 @@
         <p class="msg">El 8 de diciembre abrimos solo por la tarde<time>11:45</time></p>
         <p class="msg reply">Puesto en Google y en la web<time>12:05</time></p>
       </div>
-      <p class="small">Es un ejemplo: un mensaje y está cambiado. Sin imprimir nada.</p>
+      <p class="small">Es un ejemplo: un mensaje y está cambiado, sin imprimir nada. Los cambios de los tres primeros meses van incluidos.</p>
     </div>
     <span class="num">8 / 10</span>
   </section>
@@ -277,30 +277,22 @@
   <section class="slide">
     <div class="inner">
       <p class="kicker">Precio</p>
-      <h2>Sin pago inicial: la web ya está hecha</h2>
+      <h2>Un solo pago. Sin cuotas</h2>
       <span class="free">El primer mes, gratis</span>
       <div class="plans">
-        <div class="plan">
-          <h3>Web</h3>
-          <p class="price">19 € <small>al mes</small></p>
-          <ul>
-            <li>La web con tu dominio</li>
-            <li>Carta, precios y horario al día</li>
-            <li>Los cambios que me pidas</li>
-          </ul>
-        </div>
         <div class="plan best">
-          <span class="tag">El que te recomiendo</span>
-          <h3>Web + Google</h3>
-          <p class="price">29 € <small>al mes</small></p>
+          <span class="tag">Si te gusta, te la quedas</span>
+          <h3>Tu web y tu ficha de Google</h3>
+          <p class="price">100 € <small>una sola vez</small></p>
           <ul>
-            <li>Todo lo de la web</li>
-            <li>Tu ficha de Google trabajada</li>
-            <li>Informe mensual de tu puesto</li>
+            <li>La web con tu dominio (el primer año, incluido)</li>
+            <li>Tu ficha de Google puesta a punto</li>
+            <li>La carta, los precios y el horario al día durante tres meses</li>
+            <li>El informe de cuánto has subido en Google</li>
           </ul>
         </div>
       </div>
-      <p class="small">Sin permanencia. Dominio a tu nombre incluido. Precios sin IVA. A otros locales les cobro <span class="strike">290 € de alta + 39 € al mes</span>. A cambio, solo te pido poder enseñarla como ejemplo.</p>
+      <p class="small">Después, solo el dominio: unos 10-15 € al año, a tu nombre. Si más adelante quieres cambiar la carta, lo vemos en su momento. Precios sin IVA. A otros locales les cobro <span class="strike">290 € de alta + 39 € al mes</span>. A cambio, solo te pido poder enseñarla como ejemplo.</p>
     </div>
     <span class="num">9 / 10</span>
   </section>
