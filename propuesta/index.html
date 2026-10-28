@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Propuesta para Alfredo Café &amp; Copas</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#15100D" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <style>
+    @font-face { font-family: "DM Serif Display"; src: url("../assets/fonts/dm-serif-display.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+    @font-face { font-family: "Barlow Condensed"; src: url("../assets/fonts/barlow-condensed-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+    @font-face { font-family: "Barlow Condensed"; src: url("../assets/fonts/barlow-condensed-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+    :root {
+      --noche: #15100D; --noche-2: #221A15; --tinta: #F3E6CF; --gris: #BDAA93; --oro: #EBA43C;
+      --melocoton: #EEB97F; --nata: #F6EBDD; --espresso: #2A1B14; --verde: #2F7247; --rojo: #C2452D;
+      --gutter: clamp(20px, 5vw, 56px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { margin: 0; background: var(--noche); color: var(--tinta); font: 400 17px/1.5 "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    h1, h2 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; line-height: 1.02; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+    h2 { font-size: clamp(2.1rem, 6vw, 3.6rem); }
+    p { margin: 0; }
+    .kicker { font: 700 .82rem/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); margin-bottom: 1rem; }
+    .lead { font-size: clamp(1.08rem, 1vw + .9rem, 1.3rem); margin-top: 1.1rem; max-width: 34ch; color: var(--tinta); }
+    .small { font-size: .82rem; color: var(--gris); margin-top: 1.4rem; max-width: 46ch; }
+
+    .slide {
+      min-height: 100svh; scroll-snap-align: start; position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: calc(4.5rem + env(safe-area-inset-top)) var(--gutter) 5rem;
+    }
+    .inner { width: 100%; max-width: 1040px; margin: 0 auto; }
+    .slide--peach { background: var(--melocoton); color: var(--espresso); }
+    .slide--peach .kicker { color: #6A3606; }
+    .slide--peach .lead, .slide--peach p { color: var(--espresso); }
+    .slide--peach .small { color: #553826; }
+    .slide--nata { background: var(--nata); color: var(--espresso); }
+    .slide--nata .kicker { color: #6A3606; }
+    .slide--nata .small { color: #553826; }
+    .num { position: absolute; right: var(--gutter); bottom: 1.4rem; font: 600 .8rem "Barlow Condensed", sans-serif; letter-spacing: .12em; opacity: .85; }
+
+    /* Portada */
+    .cover h1 { font-size: clamp(3.4rem, 13vw, 7.5rem); }
+    .cover .sub { font: 700 1rem "Manrope"; letter-spacing: .32em; text-transform: uppercase; margin-top: .9rem; color: var(--oro); }
+    .cover .lead { max-width: 30ch; margin-top: 2.2rem; }
+    .cover .by { margin-top: 3rem; font-size: .9rem; color: var(--gris); }
+    .hint { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); font-size: .8rem; color: var(--gris); }
+
+    /* Lista de Google Maps */
+    .maps { margin-top: 1.8rem; background: #fff; color: #202124; border-radius: 18px; padding: .4rem 0; max-width: 520px; box-shadow: 0 18px 40px rgba(0,0,0,.25); font-family: Arial, "Manrope", sans-serif; }
+    .maps-q { display: flex; gap: .6rem; align-items: center; margin: .4rem .8rem .3rem; padding: .7rem 1rem; border-radius: 999px; background: #F1F3F4; font-size: .95rem; color: #3C4043; }
+    .maps-q svg { width: 18px; height: 18px; flex: none; }
+    .maps li { list-style: none; display: grid; grid-template-columns: 2.2rem 1fr; gap: .2rem .6rem; padding: .62rem 1rem; border-top: 1px solid #ECEDEF; }
+    .maps ol { margin: 0; padding: 0; }
+    .maps .pos { font: 700 1rem Arial, sans-serif; color: #5F6368; grid-row: span 2; align-self: center; }
+    .maps .name { font-weight: 700; font-size: .98rem; }
+    .maps .meta { font-size: .82rem; color: #5F6368; }
+    .maps .star { color: #E8A100; }
+    .maps .gap { text-align: center; color: #5F6368; font-size: 1.2rem; letter-spacing: .3em; padding: .25rem; display: block; }
+    .maps .me { background: #FFF4DF; border-top: 2px solid var(--oro); border-bottom: 2px solid var(--oro); }
+    .maps .me .pos { color: var(--rojo); font-size: 1.25rem; }
+
+    /* Tarjetas de puesto */
+    .ranks { display: grid; gap: 1rem; margin-top: 2rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+    .rank { background: var(--noche-2); border: 1px solid rgba(235,164,60,.25); border-radius: 18px; padding: 1.3rem 1.3rem 1.2rem; }
+    .rank .q { font: 700 .82rem "Barlow Condensed"; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+    .rank .big { font: 700 3.6rem/1 "Barlow Condensed", sans-serif; color: var(--oro); margin: .5rem 0 .4rem; }
+    .rank .big.out { font-size: 2rem; line-height: 1.05; padding: .5rem 0 .3rem; }
+    .rank p { font-size: .9rem; color: var(--gris); }
+
+    /* Por qué */
+    .why { display: grid; gap: 1rem; margin-top: 2rem; max-width: 640px; }
+    .why div { display: grid; grid-template-columns: 2.4rem 1fr; gap: .9rem; align-items: start; }
+    .why b { display: block; font-size: 1.05rem; }
+    .why span { color: #4A3526; font-size: .95rem; }
+    .dot { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; font: 700 1.1rem "Barlow Condensed"; }
+    .dot.ok { background: #DCEBDD; color: var(--verde); }
+    .dot.no { background: #F6D5CC; color: var(--rojo); }
+
+    /* Móviles */
+    .phones { display: flex; gap: clamp(.8rem, 3vw, 2rem); margin-top: 2.2rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .6rem; scrollbar-width: none; }
+    .phones::-webkit-scrollbar { display: none; }
+    .phone { flex: 0 0 min(62vw, 250px); scroll-snap-align: center; text-align: center; }
+    .phone .frame { border-radius: 30px; padding: 8px; background: #0B0807; box-shadow: 0 20px 44px rgba(0,0,0,.45), inset 0 0 0 1.5px #3A2E26; }
+    .phone img { display: block; width: 100%; height: auto; border-radius: 23px; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; }
+    .phone p { margin-top: .8rem; font-size: .9rem; color: var(--gris); }
+    @media (min-width: 900px) { .phones { justify-content: space-between; overflow: visible; } .phone { flex-basis: 23%; } }
+
+    /* Lista con marcas */
+    .checks { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: .9rem; max-width: 600px; }
+    .checks li { display: grid; grid-template-columns: 1.8rem 1fr; gap: .7rem; font-size: 1.05rem; }
+    .checks li::before { content: "✓"; display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--oro); color: var(--noche); font-weight: 800; font-size: .95rem; }
+    .checks small { display: block; color: var(--gris); font-size: .88rem; }
+    .slide--peach .checks li::before { background: var(--espresso); color: var(--melocoton); }
+    .slide--peach .checks small { color: #553826; }
+
+    /* Informe */
+    .report { margin-top: 2rem; width: 100%; max-width: 560px; border-collapse: collapse; font-size: 1rem; }
+    .report th, .report td { padding: .85rem .6rem; text-align: left; border-bottom: 1px solid rgba(42,27,20,.15); }
+    .report th { font: 700 .8rem "Barlow Condensed"; letter-spacing: .14em; text-transform: uppercase; color: #6A3606; }
+    .report td:nth-child(2) { font-weight: 800; }
+    .report td:nth-child(3) { color: #6A3606; font-weight: 800; }
+
+    /* Cambios */
+    .msgs { margin-top: 2rem; display: grid; gap: .7rem; max-width: 420px; }
+    .msg { justify-self: end; background: #DCF8C6; color: #111; padding: .65rem .9rem; border-radius: 14px 14px 4px 14px; font-size: .98rem; box-shadow: 0 1px 1px rgba(0,0,0,.15); }
+    .msg.reply { justify-self: start; background: #fff; border-radius: 14px 14px 14px 4px; }
+    .msg time { display: block; text-align: right; font-size: .7rem; color: #4F5F67; margin-top: .15rem; }
+
+    /* Precio */
+    .plans { display: grid; gap: 1rem; margin-top: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 760px; }
+    .plan { border-radius: 20px; padding: 1.4rem 1.4rem 1.3rem; background: var(--noche-2); border: 1px solid rgba(243,230,207,.14); position: relative; }
+    .plan.best { border: 2px solid var(--oro); }
+    .plan .tag { position: absolute; top: -.75rem; left: 1.2rem; background: var(--oro); color: var(--noche); font: 700 .78rem "Barlow Condensed"; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .6rem; border-radius: 6px; }
+    .plan h3 { margin: 0; font: 700 1.2rem "Manrope"; }
+    .plan .price { font: 700 3.2rem/1 "Barlow Condensed"; color: var(--oro); margin: .7rem 0 .2rem; }
+    .plan .price small { font-size: 1.1rem; color: var(--gris); letter-spacing: .02em; }
+    .plan ul { margin: .9rem 0 0; padding-left: 1.1rem; color: var(--tinta); font-size: .95rem; }
+    .plan li { margin-top: .35rem; }
+    .free { display: inline-block; margin-top: 1.4rem; background: var(--verde); color: #fff; font-weight: 800; padding: .45rem .9rem; border-radius: 999px; font-size: 1rem; }
+    .strike { text-decoration: line-through; }
+
+    /* Cierre */
+    .end { text-align: center; align-items: center; }
+    .end .lead { margin-left: auto; margin-right: auto; }
+    .qr { width: 190px; height: 190px; margin: 2rem auto 0; background: #fff; border-radius: 16px; padding: 12px; }
+    .qr svg { width: 100%; height: 100%; display: block; }
+    .link { display: inline-block; margin-top: 1.2rem; background: var(--oro); color: var(--noche); font-weight: 800; text-decoration: none; padding: .9rem 1.4rem; border-radius: 999px; }
+
+    @media print {
+      @page { size: 430px 932px; margin: 0; }
+      html { scroll-snap-type: none; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .slide { height: 932px; min-height: 0; break-after: page; overflow: hidden; padding-top: 3rem; padding-bottom: 3rem; }
+      .hint { display: none; }
+      .phones { overflow: visible; flex-wrap: nowrap; gap: .5rem; }
+      .phone { flex: 1 1 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1 -->
+  <section class="slide cover">
+    <div class="inner">
+      <p class="kicker">Propuesta para</p>
+      <h1>Alfredo</h1>
+      <p class="sub">Café &amp; Copas</p>
+      <p class="lead">Que te encuentren en Google cuando alguien busca heladería, cafetería o copas en Jerez.</p>
+      <p class="by">Alejandro Corral · Hostelab · noviembre de 2026</p>
+    </div>
+    <p class="hint">Desliza hacia abajo ↓</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide slide--peach">
+    <div class="inner">
+      <p class="kicker">Hoy, en Google Maps</p>
+      <h2>Buscas «heladería Jerez» y Alfredo sale el 19.º</h2>
+      <div class="maps" role="img" aria-label="Resultados de Google Maps para heladería en Jerez: Alfredo Café Copas aparece en el puesto 19">
+        <div class="maps-q"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#5F6368" d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 9.5 16a6.5 6.5 0 0 0 4.2-1.6l.3.3v.8l5 5 1.5-1.5-5-5Zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14Z"/></svg>heladería Jerez de la Frontera</div>
+        <ol>
+          <li><span class="pos">1</span><span class="name">Heladeria Different</span><span class="meta"><span class="star">★</span> 3,5 (26) · Av. Lola Flores, 8</span></li>
+          <li><span class="pos">2</span><span class="name">Heladería flor de loto</span><span class="meta"><span class="star">★</span> 4,6 (74) · Av. Voltaire, 1</span></li>
+          <li><span class="pos">3</span><span class="name">Margarita la Fresca</span><span class="meta"><span class="star">★</span> 4,6 (482) · C. Lancería, 10</span></li>
+          <li><span class="pos">4</span><span class="name">Heladería Sara y María</span><span class="meta"><span class="star">★</span> 3,3 (30)</span></li>
+          <li><span class="gap" aria-hidden="true">···</span></li>
+          <li class="me"><span class="pos">19</span><span class="name">Alfredo Café Copas</span><span class="meta"><span class="star">★</span> 4,5 (1.505) · Av. Lola Flores, 3</span></li>
+        </ol>
+      </div>
+      <p class="small">Con 1.505 reseñas y un 4,5, te adelanta un local de tu misma avenida con 26 reseñas. Búsqueda hecha el 28 de octubre de 2026 sin iniciar sesión; el orden cambia un poco según desde dónde se busque.</p>
+    </div>
+    <span class="num">2 / 10</span>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="inner">
+      <p class="kicker">Y con lo demás que vendes</p>
+      <h2>Tampoco sales arriba</h2>
+      <div class="ranks">
+        <div class="rank"><p class="q">«heladería Jerez»</p><p class="big">19.º</p><p>Delante, locales con 20 o 30 reseñas.</p></div>
+        <div class="rank"><p class="q">«cafetería Jerez»</p><p class="big">7.º</p><p>Primero sale Candié.</p></div>
+        <div class="rank"><p class="q">«copas Jerez»</p><p class="big out">Fuera de los 10 primeros</p><p>Primero sale La Palapa, en Av. Lola Flores, 16.</p></div>
+      </div>
+      <p class="small">Quien busca en el móvil suele quedarse con los primeros resultados.</p>
+    </div>
+    <span class="num">3 / 10</span>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide slide--nata">
+    <div class="inner">
+      <p class="kicker">¿Por qué?</p>
+      <h2>Google solo sabe lo que puede leer</h2>
+      <div class="why">
+        <div><span class="dot ok">✓</span><p><b>Reseñas: las tienes de sobra</b><span>1.505 y un 4,5. Muy por encima de los que salen delante.</span></p></div>
+        <div><span class="dot no">✗</span><p><b>Tu ficha no tiene web</b><span>Google no sabe que en Alfredo hay 50 sabores de helado, tartas, cócteles y copas.</span></p></div>
+        <div><span class="dot no">✗</span><p><b>La ficha se puede completar mucho más</b><span>Con la carta enlazada, fotos de los helados y las copas, y publicaciones.</span></p></div>
+      </div>
+    </div>
+    <span class="num">4 / 10</span>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="inner">
+      <p class="kicker">La solución, primera parte</p>
+      <h2>Tu web. Ya está hecha</h2>
+      <div class="phones">
+        <div class="phone"><div class="frame"><img src="img/portada.webp" alt="Portada de la web en el móvil" width="540" height="1169" /></div><p>Horario, cómo llegar y llamar con un toque</p></div>
+        <div class="phone"><div class="frame"><img src="img/carta.webp" alt="La carta en el móvil" width="540" height="1169" /></div><p>La carta y la heladería, con precios</p></div>
+        <div class="phone"><div class="frame"><img src="img/sabores.webp" alt="Los sabores de helado con foto" width="540" height="1169" /></div><p>Los 50 sabores, cada uno con su foto</p></div>
+        <div class="phone"><div class="frame"><img src="img/donde.webp" alt="Dónde estamos y horario" width="540" height="1169" /></div><p>El lunes, cerrado: lo dice solo</p></div>
+      </div>
+      <p class="small">La carta de papel se queda como está. Esto es para el que te busca antes de venir.</p>
+    </div>
+    <span class="num">5 / 10</span>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide slide--peach">
+    <div class="inner">
+      <p class="kicker">La solución, segunda parte</p>
+      <h2>Y tu ficha de Google, bien trabajada</h2>
+      <ul class="checks">
+        <li><span>Web y carta enlazadas<small>Para que Google lea que eres heladería, cafetería y bar de copas.</small></span></li>
+        <li><span>Las categorías bien puestas<small>Heladería, cafetería y bar de copas.</small></span></li>
+        <li><span>Fotos de helados, copas y tartas<small>Las de la web, que ya están hechas.</small></span></li>
+        <li><span>Horario siempre al día<small>Lunes cerrado y festivos.</small></span></li>
+        <li><span>Publicaciones en las fechas buenas<small>Navidad, verano y la planta de arriba para celebraciones.</small></span></li>
+      </ul>
+    </div>
+    <span class="num">6 / 10</span>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide slide--nata">
+    <div class="inner">
+      <p class="kicker">Cada mes</p>
+      <h2>Te enseño en qué puesto sales</h2>
+      <table class="report">
+        <thead><tr><th>Búsqueda</th><th>Hoy</th><th>Dentro de un mes</th></tr></thead>
+        <tbody>
+          <tr><td>heladería Jerez</td><td>19.º</td><td>¿?</td></tr>
+          <tr><td>cafetería Jerez</td><td>7.º</td><td>¿?</td></tr>
+          <tr><td>copas Jerez</td><td>fuera del top 10</td><td>¿?</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Así ves tú mismo si sirve o no. También verás las llamadas y las veces que te piden cómo llegar, que Google las cuenta en tu ficha.</p>
+    </div>
+    <span class="num">7 / 10</span>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="inner">
+      <p class="kicker">Para ti, cero trabajo</p>
+      <h2>Tú no tienes que tocar nada</h2>
+      <div class="msgs" aria-label="Ejemplo de mensajes de WhatsApp">
+        <p class="msg">El gofre sube a 6,50 y quitamos el melón hasta el verano<time>18:02</time></p>
+        <p class="msg reply">Hecho, ya está en la carta 👍<time>18:20</time></p>
+        <p class="msg">El 8 de diciembre abrimos solo por la tarde<time>11:45</time></p>
+        <p class="msg reply">Puesto en Google y en la web<time>12:05</time></p>
+      </div>
+      <p class="small">Es un ejemplo: un mensaje y está cambiado. Sin imprimir nada.</p>
+    </div>
+    <span class="num">8 / 10</span>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="inner">
+      <p class="kicker">Precio</p>
+      <h2>Sin pago inicial: la web ya está hecha</h2>
+      <span class="free">El primer mes, gratis</span>
+      <div class="plans">
+        <div class="plan">
+          <h3>Web</h3>
+          <p class="price">19 € <small>al mes</small></p>
+          <ul>
+            <li>La web con tu dominio</li>
+            <li>Carta, precios y horario al día</li>
+            <li>Los cambios que me pidas</li>
+          </ul>
+        </div>
+        <div class="plan best">
+          <span class="tag">El que te recomiendo</span>
+          <h3>Web + Google</h3>
+          <p class="price">29 € <small>al mes</small></p>
+          <ul>
+            <li>Todo lo de la web</li>
+            <li>Tu ficha de Google trabajada</li>
+            <li>Informe mensual de tu puesto</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small">Sin permanencia. Dominio a tu nombre incluido. Precios sin IVA. A otros locales les cobro <span class="strike">290 € de alta + 39 € al mes</span>. A cambio, solo te pido poder enseñarla como ejemplo.</p>
+    </div>
+    <span class="num">9 / 10</span>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide end slide--peach">
+    <div class="inner">
+      <h2>¿Lo probamos un mes?</h2>
+      <p class="lead">Si en un mes no ves que sirve, se quita y no pasa nada.</p>
+      <div class="qr" data-qr role="img" aria-label="Código QR de la web"></div>
+      <a class="link" href="https://alejandrocorral509.github.io/alfredo-cafe-copas/">Ver la web en el móvil</a>
+      <p class="small" style="margin-left:auto;margin-right:auto">Alejandro Corral · Hostelab</p>
+    </div>
+  </section>
+
+  <script src="../lib/qrcode.js"></script>
+  <script>
+    (function () {
+      // QR a la web publicada (cambiar cuando tenga su dominio). Fijo para que también valga en el PDF.
+      var box = document.querySelector("[data-qr]");
+      if (!box || typeof qrcode !== "function") return;
+      var url = "https://alejandrocorral509.github.io/alfredo-cafe-copas/";
+      var qr = qrcode(0, "M"); qr.addData(url); qr.make();
+      box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+    })();
+  </script>
+</body>
+</html>
