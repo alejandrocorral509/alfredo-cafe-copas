@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Boceto de la carta en papel · Alfredo Café &amp; Copas</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;700;800&display=swap" />
+<style>
+  /* Boceto del resultado final: carta A4 vertical, tapas de madera con el logo grabado y tornillos de encuadernación.
+     Se captura a PNG con tools/captura.js (selector .lamina, ancho 1600). */
+  @font-face { font-family: "DM Serif Display"; src: url("../assets/fonts/dm-serif-display.woff2") format("woff2"); }
+  @font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope.woff2") format("woff2"); font-weight: 200 800; }
+  :root { --noche: #15100D; --tinta: #F3E6CF; --gris: #BDAA93; --oro: #EBA43C; --madera-osc: #3E2410; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #15100D; font-family: "Figtree", sans-serif; color: var(--tinta); }
+  .lamina { width: 1600px; padding: 56px 64px 60px; background: radial-gradient(ellipse at 50% 40%, #2a2019 0%, #15100D 70%); }
+  h1 { font: 800 46px/1 "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; margin: 0; }
+  .intro { color: var(--gris); font-size: 18px; margin: 10px 0 0; }
+  .escena { display: grid; grid-template-columns: 420px 1fr; gap: 70px; align-items: center; margin-top: 40px; }
+  .etq { font: 800 13px "Figtree"; letter-spacing: .14em; text-transform: uppercase; color: var(--oro); margin-bottom: 18px; }
+
+  /* Madera de las tapas */
+  .madera { background:
+      repeating-linear-gradient(92deg, rgba(110,62,22,0) 0 9px, rgba(110,62,22,.10) 9px 10px, rgba(110,62,22,0) 10px 23px, rgba(90,50,18,.07) 23px 25px),
+      linear-gradient(135deg, #E4BC8B, #CC9963 50%, #B7834E); }
+
+  /* Cerrada */
+  .cerrada { position: relative; width: 340px; height: 481px; border-radius: 8px; transform: rotate(-3deg);
+    box-shadow: 18px 26px 40px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.12), inset -6px 0 0 rgba(0,0,0,.06);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--madera-osc); }
+  .cerrada::after { content: ""; position: absolute; right: -7px; top: 6px; bottom: 6px; width: 8px; border-radius: 0 3px 3px 0;
+    background: repeating-linear-gradient(180deg, #f3ead9 0 3px, #d9cbb3 3px 4px); box-shadow: 2px 0 4px rgba(0,0,0,.3); }
+  .lomo { position: absolute; left: 0; top: 0; bottom: 0; width: 42px; border-right: 2px solid rgba(62,36,16,.25); border-radius: 8px 0 0 8px; background: rgba(62,36,16,.06); }
+  .tornillo { position: absolute; left: 13px; width: 17px; height: 17px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff 0%, #c9c9c9 30%, #7d7d7d 75%, #4a4a4a 100%); box-shadow: 0 1px 2px rgba(0,0,0,.5); }
+  .tornillo::after { content: ""; position: absolute; left: 3px; right: 3px; top: 7.5px; height: 2px; background: rgba(0,0,0,.45); }
+  .t1 { top: 90px; } .t2 { top: 232px; } .t3 { bottom: 90px; }
+  .grabado { padding-left: 34px; display: flex; flex-direction: column; align-items: center; }
+  .grabado img { width: 150px; opacity: .85; mix-blend-mode: multiply; }
+  .grabado .nom { font: 400 64px/1 "DM Serif Display", serif; margin-top: 14px; opacity: .85; }
+  .grabado .sub { font: 800 12px "Manrope"; letter-spacing: .32em; text-transform: uppercase; margin-top: 8px; opacity: .92; }
+  .grabado .lc { font: 800 16px "Manrope"; letter-spacing: .3em; text-transform: uppercase; margin-top: 34px; opacity: .92; }
+
+  /* Abierta */
+  .abierta { position: relative; width: 860px; height: 640px; perspective: 1800px; margin: 0 auto; }
+  .base { position: absolute; left: 0; top: 14px; width: 860px; height: 600px; border-radius: 10px; transform: rotateX(18deg); box-shadow: 0 40px 60px rgba(0,0,0,.55); }
+  .hojas { position: absolute; left: 22px; top: 4px; width: 816px; height: 577px; display: grid; grid-template-columns: 1fr 1fr; transform: rotateX(18deg); transform-origin: 50% 60%; }
+  .hojas img { width: 100%; height: 100%; object-fit: contain; display: block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.4); }
+  .hojas .izq { border-radius: 4px 0 0 4px; overflow: hidden; box-shadow: -2px 4px 10px rgba(0,0,0,.35); }
+  .hojas .der { border-radius: 0 4px 4px 0; overflow: hidden; box-shadow: 2px 4px 10px rgba(0,0,0,.35); }
+  .canal { position: absolute; left: calc(50% - 13px); top: 0; bottom: 0; width: 26px; background: linear-gradient(90deg, rgba(0,0,0,.45), rgba(0,0,0,.1) 40%, rgba(0,0,0,.1) 60%, rgba(0,0,0,.45)); }
+  .canal .tornillo { left: 4.5px; }
+  .canal .t1 { top: 90px; } .canal .t2 { top: 280px; } .canal .t3 { bottom: 90px; top: auto; }
+
+  /* Leyenda */
+  .leyenda { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 44px; }
+  .item { background: #221A15; border: 1px solid rgba(235,164,60,.25); border-radius: 14px; padding: 18px 18px 16px; }
+  .item b { display: block; font: 800 18px "Bricolage Grotesque"; color: var(--oro); margin-bottom: 6px; }
+  .item p { margin: 0; font-size: 15px; line-height: 1.45; color: #E2D4BE; }
+  .colores { display: flex; align-items: center; gap: 12px; margin-top: 28px; font-size: 15px; color: var(--gris); }
+  .colores span { display: inline-flex; align-items: center; gap: 7px; }
+  .colores i { width: 20px; height: 20px; border-radius: 4px; display: inline-block; border: 1px solid rgba(255,255,255,.25); }
+</style>
+</head>
+<body>
+<div class="lamina">
+  <h1>Así quedaría la carta en papel</h1>
+  <p class="intro">A4 en vertical, como un libro. Tapas de madera con el logo grabado, hojas plastificadas y tornillos para cambiar una hoja cuando cambie un precio.</p>
+
+  <div class="escena">
+    <div>
+      <p class="etq">Cerrada</p>
+      <div class="cerrada madera">
+        <div class="lomo"><span class="tornillo t1"></span><span class="tornillo t2"></span><span class="tornillo t3"></span></div>
+        <div class="grabado">
+          <img src="placa/logo-25-negro.png" alt="Logo de Alfredo grabado en la tapa" />
+          <p class="nom">Alfredo</p>
+          <p class="sub">Café &amp; Copas</p>
+          <p class="lc">La carta</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="etq">Abierta</p>
+      <div class="abierta">
+        <div class="base madera"></div>
+        <div class="hojas">
+          <div class="izq"><img src="carta-papel/negro-vertical-2.webp" alt="Página de cafés" /></div>
+          <div class="der"><img src="carta-papel/negro-vertical-3.webp" alt="Página de tés" /></div>
+          <div class="canal"><span class="tornillo t1"></span><span class="tornillo t2"></span><span class="tornillo t3"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="leyenda">
+    <div class="item"><b>Tapas de madera</b><p>Contrachapado de 3-4 mm, barnizado mate, con el logo grabado con láser. A juego con la placa de las mesas.</p></div>
+    <div class="item"><b>Hojas A4</b><p>4 hojas de cartulina mate de 300-350 g, impresas por las dos caras y plastificadas: no se mojan y se limpian con bayeta.</p></div>
+    <div class="item"><b>Tornillos de encuadernación</b><p>Tres tornillos en el lomo. Se abren con una moneda para cambiar solo la hoja que cambie.</p></div>
+    <div class="item"><b>Dentro</b><p>Portada con el logo y el QR, y la carta entera (casa y heladería) con letra grande a dos columnas.</p></div>
+  </div>
+  <p class="colores">Interior a elegir:
+    <span><i style="background:#15100D"></i>negro y dorado (el del dibujo)</span>
+    <span><i style="background:#F6EBDD"></i>crema</span>
+    <span><i style="background:#EEB97F"></i>melocotón</span>
+  </p>
+</div>
+</body>
+</html>
