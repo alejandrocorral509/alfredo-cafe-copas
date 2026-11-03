@@ -91,6 +91,13 @@
     .phone p { margin-top: .8rem; font-size: .9rem; color: var(--gris); }
     @media (min-width: 900px) { .phones { justify-content: space-between; overflow: visible; } .phone { flex-basis: 23%; } }
 
+    /* Modos de carta */
+    .modos { display: grid; gap: 1rem; margin-top: 2rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .modo { background: var(--noche-2); border: 1px solid rgba(235,164,60,.25); border-radius: 18px; padding: 1.3rem; }
+    .modo svg { width: 34px; height: 34px; stroke: var(--oro); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .modo h3 { margin: .8rem 0 .4rem; font: 800 1.2rem var(--ff-head); color: var(--tinta); }
+    .modo p { font-size: .95rem; color: var(--gris); }
+
     /* Lista con marcas */
     .checks { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: .9rem; max-width: 600px; }
     .checks li { display: grid; grid-template-columns: 1.8rem 1fr; gap: .7rem; font-size: 1.05rem; }
@@ -175,7 +182,7 @@
       </div>
       <p class="small">Con 1.505 reseñas y un 4,5, te adelanta un local de tu misma avenida con 26 reseñas. Búsqueda hecha el 28 de octubre de 2026 sin iniciar sesión; el orden cambia un poco según desde dónde se busque.</p>
     </div>
-    <span class="num">2 / 10</span>
+    <span class="num">2 / 11</span>
   </section>
 
   <!-- 3 -->
@@ -190,7 +197,7 @@
       </div>
       <p class="small">Quien busca en el móvil suele quedarse con los primeros resultados.</p>
     </div>
-    <span class="num">3 / 10</span>
+    <span class="num">3 / 11</span>
   </section>
 
   <!-- 4 -->
@@ -204,7 +211,7 @@
         <div><span class="dot no">✗</span><p><b>La ficha se puede completar mucho más</b><span>Con la carta enlazada, fotos de los helados y las copas, y publicaciones.</span></p></div>
       </div>
     </div>
-    <span class="num">4 / 10</span>
+    <span class="num">4 / 11</span>
   </section>
 
   <!-- 5 -->
@@ -218,12 +225,39 @@
         <div class="phone"><div class="frame"><img src="img/sabores.webp" alt="Los sabores de helado con foto" width="540" height="1169" /></div><p>Los 50 sabores, cada uno con su foto</p></div>
         <div class="phone"><div class="frame"><img src="img/donde.webp" alt="Dónde estamos y horario" width="540" height="1169" /></div><p>El lunes, cerrado: lo dice solo</p></div>
       </div>
-      <p class="small">La carta de papel se queda como está. Esto es para el que te busca antes de venir.</p>
+      <p class="small">Esto es para el que te busca antes de venir. Para el que ya está sentado, mira la siguiente.</p>
     </div>
-    <span class="num">5 / 10</span>
+    <span class="num">5 / 11</span>
   </section>
 
   <!-- 6 -->
+  <section class="slide">
+    <div class="inner">
+      <p class="kicker">La carta, para todos</p>
+      <h2>Cada cliente, a su manera</h2>
+      <div class="modos">
+        <div class="modo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+          <h3>Con el móvil</h3>
+          <p>Un código QR en cada mesa. Lo escanean y ven la carta y la heladería con fotos.</p>
+        </div>
+        <div class="modo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2M3 9a6 6 0 0 1 0 6M5.5 10.5a2.5 2.5 0 0 1 0 3"/></svg>
+          <h3>Con un toque</h3>
+          <p>Una pegatina NFC en la mesa: acercan el móvil y se abre la carta. Si ya tienes tarjetas NFC, se pueden usar para esto.</p>
+        </div>
+        <div class="modo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l3 3v17H6z"/><path d="M15 2v3h3M9 10h6M9 14h6M9 18h4"/></svg>
+          <h3>En papel</h3>
+          <p>Para quien prefiere lo de siempre: una carta impresa con letra grande y clara.</p>
+        </div>
+      </div>
+      <p class="small">Las tres salen de la misma carta: cuando cambia un precio, cambia en el móvil y la de papel se vuelve a imprimir igual, sin diseñar nada de nuevo.</p>
+    </div>
+    <span class="num">6 / 11</span>
+  </section>
+
+  <!-- 7 -->
   <section class="slide slide--peach">
     <div class="inner">
       <p class="kicker">La solución, segunda parte</p>
@@ -236,10 +270,10 @@
         <li><span>Publicaciones en las fechas buenas<small>Navidad, verano y la planta de arriba para celebraciones.</small></span></li>
       </ul>
     </div>
-    <span class="num">6 / 10</span>
+    <span class="num">7 / 11</span>
   </section>
 
-  <!-- 7 -->
+  <!-- 8 -->
   <section class="slide slide--nata">
     <div class="inner">
       <p class="kicker">Al acabar el mes de prueba</p>
@@ -254,10 +288,10 @@
       </table>
       <p class="small">Así decides con datos si te la quedas. También verás las llamadas y las veces que te piden cómo llegar, que Google las cuenta en tu ficha.</p>
     </div>
-    <span class="num">7 / 10</span>
+    <span class="num">8 / 11</span>
   </section>
 
-  <!-- 8 -->
+  <!-- 9 -->
   <section class="slide">
     <div class="inner">
       <p class="kicker">Para ti, cero trabajo</p>
@@ -270,10 +304,10 @@
       </div>
       <p class="small">Es un ejemplo: un mensaje y está cambiado, sin imprimir nada. Los cambios de los tres primeros meses van incluidos.</p>
     </div>
-    <span class="num">8 / 10</span>
+    <span class="num">9 / 11</span>
   </section>
 
-  <!-- 9 -->
+  <!-- 10 -->
   <section class="slide">
     <div class="inner">
       <p class="kicker">Precio</p>
@@ -283,21 +317,22 @@
         <div class="plan best">
           <span class="tag">Si te gusta, te la quedas</span>
           <h3>Tu web y tu ficha de Google</h3>
-          <p class="price">100 € <small>una sola vez</small></p>
+          <p class="price">150 € <small>una sola vez</small></p>
           <ul>
             <li>La web con tu dominio (el primer año, incluido)</li>
             <li>Tu ficha de Google puesta a punto</li>
+            <li>La carta con QR, NFC y lista para imprimir</li>
             <li>La carta, los precios y el horario al día durante tres meses</li>
             <li>El informe de cuánto has subido en Google</li>
           </ul>
         </div>
       </div>
-      <p class="small">Después, solo el dominio: unos 10-15 € al año, a tu nombre. Si más adelante quieres cambiar la carta, lo vemos en su momento. Precios sin IVA. A otros locales les cobro <span class="strike">290 € de alta + 39 € al mes</span>. A cambio, solo te pido poder enseñarla como ejemplo.</p>
+      <p class="small">Después, si quieres tenerlo todo al día, 10 € al mes, o cambios sueltos a 10 €. El dominio, unos 10-15 € al año, a tu nombre. Precios sin IVA. A otros locales les cobro <span class="strike">290 € de alta + 39 € al mes</span>. A cambio, solo te pido poder enseñarla como ejemplo.</p>
     </div>
-    <span class="num">9 / 10</span>
+    <span class="num">10 / 11</span>
   </section>
 
-  <!-- 10 -->
+  <!-- 11 -->
   <section class="slide end slide--peach">
     <div class="inner">
       <h2>¿Lo probamos un mes?</h2>
