@@ -112,7 +112,36 @@
     .una b { font-family: var(--ff-head); font-size: calc(var(--u) * 1.7); color: var(--oro); white-space: nowrap; }
     .una span { font-size: calc(var(--u) * 1.3); }
 
-    /* ---------- 7. Lista con marcas ---------- */
+
+    /* ---------- Listas de las diapositivas 6 y 7 ---------- */
+    .lista { list-style: none; padding: 0; margin-top: calc(var(--u) * 2.4); display: grid; gap: calc(var(--u) * 1.2); font-size: calc(var(--u) * 1.55); }
+    .lista li { padding-left: calc(var(--u) * 2.2); position: relative; }
+    .lista li::before { content: ""; position: absolute; left: 0; top: .55em; width: calc(var(--u) * .9); height: calc(var(--u) * .9); border-radius: 50%; background: var(--oro); }
+    .slide--nata .lista li::before { background: var(--marron-k); }
+
+    /* ---------- La placa de madera ---------- */
+    .placas { display: flex; justify-content: center; align-items: center; gap: calc(var(--u) * 3); }
+    .placa { width: calc(var(--u) * 19); aspect-ratio: 1; border-radius: calc(var(--u) * 1.2); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #3E2410;
+      background: repeating-linear-gradient(97deg, rgba(120,72,30,0) 0 calc(var(--u) * .9), rgba(120,72,30,.10) calc(var(--u) * .9) calc(var(--u) * 1)), linear-gradient(135deg, #E2B887, #C99560 55%, #B9844F);
+      box-shadow: 0 calc(var(--u) * 1.6) calc(var(--u) * 3) rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.15), inset 0 calc(var(--u) * -.4) 0 rgba(0,0,0,.12); }
+    .placa--delante { transform: rotate(-4deg); }
+    .placa--detras { transform: rotate(5deg) translateY(calc(var(--u) * 2)); }
+    .placa-tit { font: 700 calc(var(--u) * 1.7)/1 "Barlow Condensed", var(--ff-head); letter-spacing: .14em; text-transform: uppercase; }
+    .placa-qr { width: 60%; aspect-ratio: 1; margin: calc(var(--u) * .9) 0 calc(var(--u) * .7); opacity: .9; }
+    .placa-qr svg { width: 100%; height: 100%; display: block; }
+    .placa-pie { font: 700 calc(var(--u) * .78) var(--ff-body); }
+    .placa-logo { width: 46%; aspect-ratio: 865 / 597; background: #3E2410; opacity: .9;
+      -webkit-mask: url("placa/logo-25-negro.png") center / contain no-repeat; mask: url("placa/logo-25-negro.png") center / contain no-repeat; }
+    .placa-nom { font: 400 calc(var(--u) * 2.6)/1 Georgia, "DM Serif Display", serif; margin-top: calc(var(--u) * .6); }
+    .placa-sub { font: 800 calc(var(--u) * .62) var(--ff-body); letter-spacing: .3em; text-transform: uppercase; margin-top: calc(var(--u) * .5); }
+
+    /* ---------- Las hojas de la carta en papel ---------- */
+    .hojas { position: relative; height: calc(var(--u) * 40); }
+    .hoja { position: absolute; width: calc(var(--u) * 22); height: auto; border-radius: 3px; box-shadow: 0 calc(var(--u) * 1.4) calc(var(--u) * 3) rgba(42,27,20,.35); background: #fff; }
+    .hoja--1 { left: 0; top: 0; transform: rotate(-4deg); }
+    .hoja--2 { right: 0; top: calc(var(--u) * 3); transform: rotate(3deg); }
+
+    /* ---------- Lista con marcas ---------- */
     .checks { list-style: none; padding: 0; display: grid; gap: calc(var(--u) * 1.6); }
     .checks li { display: grid; grid-template-columns: calc(var(--u) * 3) 1fr; gap: calc(var(--u) * 1.2); font-size: calc(var(--u) * 1.8); font-weight: 700; }
     .checks li::before { content: "✓"; display: grid; place-items: center; width: calc(var(--u) * 3); height: calc(var(--u) * 3); border-radius: 50%; background: var(--espresso); color: var(--melocoton); font-weight: 800; font-size: calc(var(--u) * 1.4); }
@@ -251,32 +280,51 @@
     </section>
 
     <!-- 6 -->
-    <section class="slide stack" aria-label="La carta para todos">
+    <section class="slide two" aria-label="La placa para la mesa">
       <div>
-        <p class="kicker">La carta, para todos</p>
-        <h2>Cada cliente, a su manera</h2>
+        <p class="kicker">La carta, en la mesa</p>
+        <h2>Una placa de madera, no una pegatina</h2>
+        <ul class="lista">
+          <li>Por delante, el QR de la carta. Por detrás, tu logo.</li>
+          <li>Dentro lleva una etiqueta NFC: acercan el móvil y se abre la carta.</li>
+          <li>Se pone al montar la mesa y se recoge al cerrar. No se despega ni se moja como una pegatina.</li>
+          <li>10 × 10 cm, madera grabada con láser en un taller de Jerez.</li>
+        </ul>
+        <p class="small">El diseño lo hago yo. Las placas se pagan aparte: unos 4-10 € cada una, según cuántas.</p>
       </div>
-      <div class="modos">
-        <div class="modo">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
-          <h3>Con el móvil</h3>
-          <p>Un código QR en cada mesa. Lo escanean y ven la carta y la heladería con fotos.</p>
+      <div class="placas" aria-label="La placa por delante y por detrás">
+        <div class="placa placa--delante">
+          <p class="placa-tit">La carta</p>
+          <div class="placa-qr" data-qr data-color="#3E2410"></div>
+          <p class="placa-pie">Escanea o acerca el móvil</p>
         </div>
-        <div class="modo">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2M3 9a6 6 0 0 1 0 6M5.5 10.5a2.5 2.5 0 0 1 0 3"/></svg>
-          <h3>Con un toque</h3>
-          <p>Una pegatina NFC en la mesa: acercan el móvil y se abre la carta. Si ya tienes tarjetas NFC, se pueden usar para esto.</p>
-        </div>
-        <div class="modo">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l3 3v17H6z"/><path d="M15 2v3h3M9 10h6M9 14h6M9 18h4"/></svg>
-          <h3>En papel</h3>
-          <p>Para quien prefiere lo de siempre: una carta impresa con letra grande y clara.</p>
+        <div class="placa placa--detras">
+          <span class="placa-logo" aria-hidden="true"></span>
+          <p class="placa-nom">Alfredo</p>
+          <p class="placa-sub">Café &amp; Copas</p>
         </div>
       </div>
-      <div class="una"><b>Una sola carta</b><span>La de la casa y la de la heladería, juntas. Cambias un precio y cambia en el móvil y en la de papel, que se vuelve a imprimir igual.</span></div>
     </section>
 
     <!-- 7 -->
+    <section class="slide slide--nata two" aria-label="La carta en papel">
+      <div>
+        <p class="kicker">Y para los de toda la vida</p>
+        <h2>La carta en papel, nueva</h2>
+        <ul class="lista">
+          <li><b>Letra grande</b> y clara, para leerla sin gafas.</li>
+          <li><b>Una sola carta:</b> la de la casa y la de la heladería, juntas.</li>
+          <li>En la portada, el QR para ver los helados con foto.</li>
+          <li>Sale de la misma carta que la web: cambias un precio y se vuelve a imprimir igual.</li>
+        </ul>
+      </div>
+      <div class="hojas" aria-label="Portada y primera página de la carta en papel">
+        <img class="hoja hoja--1" src="img/papel-1.webp" alt="Portada de la carta en papel con el QR" width="700" height="990" />
+        <img class="hoja hoja--2" src="img/papel-2.webp" alt="Página de cafés de la carta en papel, con letra grande" width="700" height="990" />
+      </div>
+    </section>
+
+    <!-- 8 -->
     <section class="slide slide--peach two" aria-label="La ficha de Google">
       <div>
         <p class="kicker">La solución, segunda parte</p>
@@ -291,7 +339,7 @@
       </ul>
     </section>
 
-    <!-- 8 -->
+    <!-- 9 -->
     <section class="slide slide--nata two" aria-label="El informe">
       <div>
         <p class="kicker">Al acabar el mes de prueba</p>
@@ -308,7 +356,7 @@
       </table>
     </section>
 
-    <!-- 9 -->
+    <!-- 10 -->
     <section class="slide two" aria-label="Cero trabajo">
       <div>
         <p class="kicker">Para ti, cero trabajo</p>
@@ -323,7 +371,7 @@
       </div>
     </section>
 
-    <!-- 10 -->
+    <!-- 11 -->
     <section class="slide two" aria-label="Precio">
       <div>
         <p class="kicker">Precio</p>
@@ -338,14 +386,15 @@
         <ul>
           <li>La web con tu dominio (el primer año, incluido)</li>
           <li>Tu ficha de Google puesta a punto</li>
-          <li>Una sola carta, con QR, NFC y lista para imprimir</li>
+          <li>El diseño de la placa de madera con QR y NFC</li>
+          <li>La carta en papel nueva, una sola y con letra grande</li>
           <li>Precios y horario al día durante tres meses</li>
           <li>El informe de cuánto has subido en Google</li>
         </ul>
       </div>
     </section>
 
-    <!-- 11 -->
+    <!-- 12 -->
     <section class="slide slide--peach end" aria-label="Cierre">
       <div>
         <h2>¿Lo probamos un mes?</h2>
@@ -362,7 +411,7 @@
 
   <nav class="controls" aria-label="Diapositivas">
     <button type="button" data-prev aria-label="Anterior">←</button>
-    <span class="count" data-count>1 / 11</span>
+    <span class="count" data-count>1 / 12</span>
     <button type="button" data-next aria-label="Siguiente">→</button>
     <button type="button" data-full aria-label="Pantalla completa">⛶</button>
   </nav>
@@ -371,11 +420,13 @@
   <script>
     (function () {
       // QR a la web publicada (cambiar cuando tenga su dominio). Fijo para que también valga en el PDF.
-      var box = document.querySelector("[data-qr]");
-      if (box && typeof qrcode === "function") {
-        var qr = qrcode(0, "M"); qr.addData("https://alejandrocorral509.github.io/alfredo-cafe-copas/"); qr.make();
-        box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
-      }
+      if (typeof qrcode === "function") document.querySelectorAll("[data-qr]").forEach(function (box) {
+        var placa = box.classList.contains("placa-qr");
+        var qr = qrcode(0, "M"); qr.addData("https://alejandrocorral509.github.io/alfredo-cafe-copas/" + (placa ? "carta.html" : "")); qr.make();
+        box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true })
+          .replace(/fill="black"/g, 'fill="' + (box.dataset.color || "#000") + '"')
+          .replace(/fill="white"/g, placa ? 'fill="transparent"' : 'fill="white"');
+      });
 
       // Navegación de la presentación
       var slides = [].slice.call(document.querySelectorAll(".slide"));
